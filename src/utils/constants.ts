@@ -1,1 +1,1 @@
-// this for constants later
+export const testConstant = () => {};

@@ -1,1 +1,1 @@
-// this for helpers later
+export const exampleConstants = {};

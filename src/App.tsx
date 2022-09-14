@@ -2,7 +2,6 @@ import React, { PropsWithChildren } from "react";
 import { Provider as ReduxProvider } from "react-redux";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { Routes, Route } from "react-router-dom";
-import "./App.css";
 import { store } from "./store";
 import AppPage from "./pages/AppPage";
 

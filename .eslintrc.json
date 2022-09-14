@@ -1,7 +1,7 @@
 {
   "env": {
     "browser": true,
-    "es2021": true,
+    "es6": true,
     "jest": true
   },
   "extends": [
@@ -19,7 +19,11 @@
     },
     "ecmaVersion": "latest",
     "sourceType": "module",
-    "project": "./tsconfig.json"
+    "project": [
+      "./tsconfig.json",
+      "./postcss.config.js",
+      "./tailwind.config.js"
+    ]
   },
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
@@ -40,6 +44,7 @@
     "react/jsx-uses-react": ["off"],
     "react/react-in-jsx-scope": ["off"],
     "react/jsx-props-no-spreading": ["warn"],
-    "no-shadow": "off"
+    "no-shadow": "off",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }]
   }
 }

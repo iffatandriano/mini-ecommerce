@@ -1,1 +1,1 @@
-// this for types later
+export const typesExamples = {};
