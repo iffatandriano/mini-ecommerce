@@ -12,6 +12,8 @@ export type Products = {
   images: string[];
 };
 
+export type ProductDetailsResponses = Products;
+
 export type ProductHomesParams = {
   limit: number;
 };

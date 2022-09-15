@@ -7,7 +7,9 @@ function MainLayout({ children }: PropsWithChildren) {
       <header>
         <div className="flex flex-row justify-between sm:max-w-full items-center mb-10">
           <div />
-          <h1 className="lg:text-3xl sm:text-xl font-bold">Mini E-Commerce</h1>
+          <a href="/" className="lg:text-3xl sm:text-xl font-bold">
+            Mini E-Commerce
+          </a>
           <CartHomeItem />
         </div>
       </header>

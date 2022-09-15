@@ -1,5 +1,9 @@
 import axios from "axios";
-import { CategoriesResponses, ProductResponses } from "./types";
+import {
+  CategoriesResponses,
+  ProductDetailsResponses,
+  ProductResponses,
+} from "./types";
 
 const API_URL = process.env.REACT_APP_SERVICES_API_URL;
 
@@ -11,6 +15,9 @@ export const getProductsHomes = () =>
 
 export const getProductsHomesAll = () =>
   axiosClient.get<ProductResponses>("products");
+
+export const getProductDetailById = (id: string) =>
+  axiosClient.get<ProductDetailsResponses>(`products/${id}`);
 
 export const getAllCategories = () =>
   axiosClient.get<CategoriesResponses>("products/categories");

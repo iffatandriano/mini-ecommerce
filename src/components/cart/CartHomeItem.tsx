@@ -3,7 +3,7 @@ import { AiOutlineDelete, AiOutlineShoppingCart } from "react-icons/ai";
 
 function CartHomeItem() {
   return (
-    <div className="group block sm:group sm:block mb-10">
+    <div className="group block sm:group sm:block">
       <div className="flex">
         <AiOutlineShoppingCart className="lg:text-2xl sm:text-xl hover:cursor-pointer hover:text-blue-500" />
         <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
