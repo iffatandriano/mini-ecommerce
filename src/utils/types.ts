@@ -19,3 +19,7 @@ export type ProductHomesParams = {
 export type ProductResponses = {
   products: Products[];
 };
+
+export type CategoriesResponses = {
+  category: String[];
+};
