@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { store } from "./store";
 // import AppPage from "./pages/AppPage";
 import HomesPage from "./pages/homes/HomesPage";
+import ProductHomesDetail from "./components/products/ProductHomesDetail";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ function App() {
     <AppWithProviders>
       <Routes>
         <Route path="/" element={<HomesPage />} />;
+        <Route path="/products/:id" element={<ProductHomesDetail />} />;
       </Routes>
     </AppWithProviders>
   );
