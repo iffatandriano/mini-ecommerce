@@ -1,20 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
 import { useQuery } from "react-query";
 import { getProductsHomes } from "../../utils/services";
 import { Products } from "../../utils/types";
 import Loading from "../Loading";
+import ToastError from "../ToastError";
 
 export default function ProductHomesItem() {
-  const { data, isLoading } = useQuery("products", getProductsHomes);
+  const [hiddenToast, setHiddenToast] = useState(false);
+  const { data, isLoading } = useQuery("products", getProductsHomes, {
+    onError: (err) => {
+      setHiddenToast(false);
+      <ToastError hidden={hiddenToast} message={`${err}`} />;
+      setTimeout(() => {
+        setHiddenToast(true);
+        <ToastError hidden={hiddenToast} message={`${err}`} />;
+      }, 5000);
+    },
+  });
 
   return (
     <>
       <div className="flex flex-row justify-between items-center mt-10">
         <span className="font-bold text-xl">Products</span>
-        <button
+        <a
           className="rounded text-black bg-white hover:shadow-3xl py-2 px-4"
-          type="button"
+          href="/products"
           style={{
             border: "solid .0625rem #000",
             borderRadius: ".25rem",
@@ -22,7 +33,7 @@ export default function ProductHomesItem() {
           }}
         >
           View All
-        </button>
+        </a>
       </div>
       {isLoading ? (
         <Loading />

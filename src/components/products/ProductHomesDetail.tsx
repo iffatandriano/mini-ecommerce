@@ -15,13 +15,26 @@ import MainLayout from "../mainlayout";
 import "../../index.css";
 import { getProductDetailById } from "../../utils/services";
 import Loading from "../Loading";
+import ToastError from "../ToastError";
 
 function ProductHomesDetail() {
   const [quantity, setQuantity] = useState(1);
+  const [hiddenToast, setHiddenToast] = useState(false);
   const params = useParams();
 
-  const { data, isLoading } = useQuery("productsDetail", () =>
-    getProductDetailById(params?.id as string),
+  const { data, isLoading } = useQuery(
+    "productsDetail",
+    () => getProductDetailById(params?.id as string),
+    {
+      onError: (err) => {
+        setHiddenToast(false);
+        <ToastError hidden={hiddenToast} message={`${err}`} />;
+        setTimeout(() => {
+          setHiddenToast(true);
+          <ToastError hidden={hiddenToast} message={`${err}`} />;
+        }, 5000);
+      },
+    },
   );
 
   return (

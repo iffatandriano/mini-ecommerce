@@ -6,6 +6,7 @@ import { store } from "./store";
 // import AppPage from "./pages/AppPage";
 import HomesPage from "./pages/homes/HomesPage";
 import ProductHomesDetail from "./components/products/ProductHomesDetail";
+import ProductViewAll from "./components/products/ProductViewAll";
 
 const queryClient = new QueryClient();
 
@@ -21,7 +22,8 @@ function App() {
   return (
     <AppWithProviders>
       <Routes>
-        <Route path="/" element={<HomesPage />} />;
+        <Route path="/" element={<HomesPage />} />
+        <Route path="/products" element={<ProductViewAll />} />
         <Route path="/products/:id" element={<ProductHomesDetail />} />;
       </Routes>
     </AppWithProviders>
