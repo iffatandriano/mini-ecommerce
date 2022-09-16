@@ -25,3 +25,5 @@ export type ProductResponses = {
 export type CategoriesResponses = {
   category: String[];
 };
+
+export type CategoriesSidebarResponses = String[];

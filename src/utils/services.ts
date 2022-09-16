@@ -1,6 +1,7 @@
 import axios from "axios";
 import {
   CategoriesResponses,
+  CategoriesSidebarResponses,
   ProductDetailsResponses,
   ProductResponses,
 } from "./types";
@@ -21,3 +22,9 @@ export const getProductDetailById = (id: string) =>
 
 export const getAllCategories = () =>
   axiosClient.get<CategoriesResponses>("products/categories");
+
+export const getAllSidebarCategories = () =>
+  axiosClient.get<CategoriesSidebarResponses>("products/categories");
+
+export const getAllProductByCategories = (category: string) =>
+  axiosClient.get<ProductResponses>(`/products/category/${category}`);

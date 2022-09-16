@@ -1,26 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
 import { useQuery } from "react-query";
-import { getProductsHomesAll } from "../../utils/services";
+import { useParams } from "react-router-dom";
+import { getAllProductByCategories } from "../../utils/services";
 import { Products } from "../../utils/types";
 import Loading from "../Loading";
 import MainLayout from "../mainlayout";
 import SidebarCategories from "../mainlayout/Sidebar/SidebarCategories";
-import ToastError from "../ToastError";
 
-export default function ProductViewAll() {
-  const [hiddenToast, setHiddenToast] = useState(false);
-  const { data, isLoading } = useQuery("products", getProductsHomesAll, {
-    onError: (err) => {
-      setHiddenToast(false);
-      <ToastError hidden={hiddenToast} message={`${err}`} />;
-      setTimeout(() => {
-        setHiddenToast(true);
-        <ToastError hidden={hiddenToast} message={`${err}`} />;
-      }, 5000);
-    },
-  });
-
+export default function ProductViewByCategories() {
+  const params = useParams();
+  const { data, isLoading } = useQuery("products", () =>
+    getAllProductByCategories(params?.category as any),
+  );
   return (
     <MainLayout>
       <div className="container w-full">

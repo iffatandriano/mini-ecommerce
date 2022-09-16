@@ -7,6 +7,7 @@ import { store } from "./store";
 import HomesPage from "./pages/homes/HomesPage";
 import ProductHomesDetail from "./components/products/ProductHomesDetail";
 import ProductViewAll from "./components/products/ProductViewAll";
+import ProductViewByCategories from "./components/products/ProductViewByCategories";
 
 const queryClient = new QueryClient();
 
@@ -24,7 +25,11 @@ function App() {
       <Routes>
         <Route path="/" element={<HomesPage />} />
         <Route path="/products" element={<ProductViewAll />} />
-        <Route path="/products/:id" element={<ProductHomesDetail />} />;
+        <Route path="/products/:id" element={<ProductHomesDetail />} />
+        <Route
+          path="/products/category/:category"
+          element={<ProductViewByCategories />}
+        />
       </Routes>
     </AppWithProviders>
   );

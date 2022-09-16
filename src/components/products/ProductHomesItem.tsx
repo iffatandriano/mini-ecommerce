@@ -53,16 +53,19 @@ export default function ProductHomesItem() {
                 alt="products-thumbnails"
                 className="object-cover w-full h-80"
               />
-              <div className="mt-4 p-4">
+              <div className="mt-4 p-4 flex flex-col">
                 <a
                   className="text-lg font-semibold hover:cursor-pointer"
                   href={`/products/${productData?.id}`}
                 >
                   {productData.title}
                 </a>
-                <p className="text-sm subpixel-antialiasedmt mt-2 underline">
+                <a
+                  href={`/products/category/${productData?.category}`}
+                  className="text-sm subpixel-antialiasedmt underline hover:cursor-pointer"
+                >
                   {productData.category}
-                </p>
+                </a>
                 <p className="text-lg font-bold antialiased mt-2 italic">
                   $
                   {productData.price

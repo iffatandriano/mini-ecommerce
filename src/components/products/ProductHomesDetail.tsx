@@ -82,12 +82,13 @@ function ProductHomesDetail() {
                     .toString()
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </span>
-                <span
+                <a
+                  href={`/products/category/${data?.data?.category}`}
                   className="basis-1/4 text-base font-semibold underline p-4 text-center"
                   style={{ border: "solid .0625rem #000" }}
                 >
                   {data?.data?.category}
-                </span>
+                </a>
                 <span
                   className="basis-1/4 text-base font-semibold p-4"
                   style={{ border: "solid .0625rem #000" }}
