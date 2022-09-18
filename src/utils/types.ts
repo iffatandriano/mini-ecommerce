@@ -27,3 +27,7 @@ export type CategoriesResponses = {
 };
 
 export type CategoriesSidebarResponses = String[];
+
+export type Cart = {
+  id: number;
+};
