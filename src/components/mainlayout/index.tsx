@@ -14,7 +14,7 @@ function MainLayout({ children }: PropsWithChildren) {
         </div>
       </header>
       <main>{children}</main>
-      <footer className="flex justify-center mt-4">
+      <footer className="flex justify-center mt-4 inset-x-0 bottom-0 p-4">
         <p className="font-semibold text-base">
           Write code with <span style={{ color: "red" }}>💙</span>
         </p>

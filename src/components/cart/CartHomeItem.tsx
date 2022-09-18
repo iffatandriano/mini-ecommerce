@@ -113,12 +113,12 @@ function CartHomeItem() {
             >
               Checkout
             </button>
-            <button
-              type="button"
-              className="bg-white-500 text-blue-700 font-bold py-2 px-4 rounded border-blue-700 border mt-2"
+            <a
+              href="/products/cart"
+              className="text-center bg-white-500 text-blue-700 font-bold py-2 px-4 rounded border-blue-700 border mt-2"
             >
               View chart
-            </button>
+            </a>
           </div>
         </div>
       </div>
