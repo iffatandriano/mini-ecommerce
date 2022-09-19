@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -16,11 +16,13 @@ import "../../index.css";
 import { getProductDetailById } from "../../utils/services";
 import Loading from "../Loading";
 import ToastError from "../ToastError";
+import { CartContext, CartContextType } from "../../utils/context/CartContext";
 
 function ProductHomesDetail() {
   const [quantity, setQuantity] = useState(1);
   const [hiddenToast, setHiddenToast] = useState(false);
   const params = useParams();
+  const { addProductToCarts } = useContext(CartContext) as CartContextType;
 
   const { data, isLoading } = useQuery(
     "productsDetail",
@@ -45,7 +47,10 @@ function ProductHomesDetail() {
         }}
         navigation
         modules={[Pagination, Navigation]}
-        style={{ height: 450, border: "solid .0625rem #000" }}
+        style={{
+          height: 450,
+          border: "solid .0625rem #000",
+        }}
       >
         {isLoading ? (
           <Loading />
@@ -149,6 +154,16 @@ function ProductHomesDetail() {
                   // backgroundColor: "#FF9587",
                 }}
                 type="button"
+                onClick={() =>
+                  addProductToCarts(
+                    parseFloat(params?.id as string),
+                    data?.data?.title as string,
+                    data?.data?.thumbnail as string,
+                    data?.data?.price as number,
+                    data?.data?.discountPercentage as number,
+                    quantity,
+                  )
+                }
               >
                 <div className="flex flex-row items-center gap-2 text-white justify-center">
                   Add to chart

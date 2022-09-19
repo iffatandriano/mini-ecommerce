@@ -29,5 +29,10 @@ export type CategoriesResponses = {
 export type CategoriesSidebarResponses = String[];
 
 export type Cart = {
-  id: number;
+  id?: number;
+  title: string;
+  thumbnail: string;
+  price: number;
+  discount: number;
+  quantity: number;
 };

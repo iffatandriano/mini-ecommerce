@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
 import { useQuery } from "react-query";
+import { CartContext, CartContextType } from "../../utils/context/CartContext";
 import { getProductsHomesAll } from "../../utils/services";
 import { Products } from "../../utils/types";
 import Loading from "../Loading";
@@ -10,6 +11,8 @@ import ToastError from "../ToastError";
 
 export default function ProductViewAll() {
   const [hiddenToast, setHiddenToast] = useState(false);
+  const { addProductToCarts } = useContext(CartContext) as CartContextType;
+
   const { data, isLoading } = useQuery("products", getProductsHomesAll, {
     onError: (err) => {
       setHiddenToast(false);
@@ -87,6 +90,16 @@ export default function ProductViewAll() {
                           backgroundColor: "#FF9587",
                         }}
                         type="button"
+                        onClick={() =>
+                          addProductToCarts(
+                            productData.id,
+                            productData.title,
+                            productData.thumbnail,
+                            productData.price,
+                            productData.discountPercentage,
+                            1,
+                          )
+                        }
                       >
                         <div className="flex flex-row items-center gap-2">
                           <AiOutlineShoppingCart className="text-xl" />

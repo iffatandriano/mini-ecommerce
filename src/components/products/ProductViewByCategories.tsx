@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import { CartContext, CartContextType } from "../../utils/context/CartContext";
 import { getAllProductByCategories } from "../../utils/services";
 import { Products } from "../../utils/types";
 import Loading from "../Loading";
@@ -10,6 +11,7 @@ import SidebarCategories from "../mainlayout/Sidebar/SidebarCategories";
 
 export default function ProductViewByCategories() {
   const params = useParams();
+  const { addProductToCarts } = useContext(CartContext) as CartContextType;
   const { data, isLoading } = useQuery("products", () =>
     getAllProductByCategories(params?.category as any),
   );
@@ -79,6 +81,16 @@ export default function ProductViewByCategories() {
                           backgroundColor: "#FF9587",
                         }}
                         type="button"
+                        onClick={() =>
+                          addProductToCarts(
+                            productData.id,
+                            productData.title,
+                            productData.thumbnail,
+                            productData.price,
+                            productData.discountPercentage,
+                            1,
+                          )
+                        }
                       >
                         <div className="flex flex-row items-center gap-2">
                           <AiOutlineShoppingCart className="text-xl" />
