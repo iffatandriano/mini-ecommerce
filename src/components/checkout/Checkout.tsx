@@ -3,6 +3,13 @@ import { CartContext, CartContextType } from "../../utils/context/CartContext";
 
 export default function Checkout() {
   const { cartProduct } = useContext(CartContext) as CartContextType;
+
+  const handleToCheckout = () => {
+    const currentLocation = document.referrer;
+    localStorage.removeItem("cart");
+    window.location.replace(currentLocation);
+  };
+
   return (
     <div
       className="w-2/5 bg-white p-2 shadow-3xl"
@@ -47,6 +54,7 @@ export default function Checkout() {
             borderRadius: "0.25rem",
           }}
           type="button"
+          onClick={handleToCheckout}
         >
           GO TO CHECKOUT
         </button>
