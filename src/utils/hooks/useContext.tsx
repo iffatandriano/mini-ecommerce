@@ -52,9 +52,40 @@ export default function CartProvider(props: PropsWithChildren<{}>) {
     localStorage.setItem("cart", JSON.stringify(cartCopy));
   };
 
+  const increaseQuantityProductById = (idProduct: number, quantity: number) => {
+    const cartCopy = [...cartProduct];
+    const existingItems = cartCopy.find((item) => item.id === idProduct);
+
+    if (!existingItems) return;
+
+    existingItems.quantity = quantity + 1;
+
+    setCartProduct(cartCopy);
+    localStorage.setItem("cart", JSON.stringify(cartCopy));
+  };
+
+  const decreaseQuantityProductById = (idProduct: number, quantity: number) => {
+    const cartCopy = [...cartProduct];
+    const existingItems = cartCopy.find((item) => item.id === idProduct);
+
+    if (!existingItems) return;
+    if (quantity === 1) return;
+
+    existingItems.quantity = quantity - 1;
+
+    setCartProduct(cartCopy);
+    localStorage.setItem("cart", JSON.stringify(cartCopy));
+  };
+
   return (
     <CartContext.Provider
-      value={{ cartProduct, addProductToCarts, deleteItemProductFromCarts }}
+      value={{
+        cartProduct,
+        addProductToCarts,
+        deleteItemProductFromCarts,
+        increaseQuantityProductById,
+        decreaseQuantityProductById,
+      }}
       {...props}
     />
   );

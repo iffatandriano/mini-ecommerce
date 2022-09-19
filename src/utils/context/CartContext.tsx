@@ -12,6 +12,8 @@ export type CartContextType = {
     quantity: number,
   ) => void;
   deleteItemProductFromCarts: (idProduct: number) => void;
+  increaseQuantityProductById: (idProduct: number, quantity: number) => void;
+  decreaseQuantityProductById: (idProduct: number, quantity: number) => void;
 };
 
 export const CartContext = createContext<CartContextType | null>(null);

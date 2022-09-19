@@ -1,12 +1,18 @@
 import React, { useContext } from "react";
+import { AiOutlineMinusCircle } from "react-icons/ai";
+import { GrAddCircle } from "react-icons/gr";
 import { CartContext, CartContextType } from "../../utils/context/CartContext";
 import { changePriceToDollarTypes } from "../../utils/helpers";
 import { Cart } from "../../utils/types";
 
 export default function CartContainer() {
-  const { cartProduct, deleteItemProductFromCarts } = useContext(
-    CartContext,
-  ) as CartContextType;
+  const {
+    cartProduct,
+    deleteItemProductFromCarts,
+    increaseQuantityProductById,
+    decreaseQuantityProductById,
+  } = useContext(CartContext) as CartContextType;
+
   return (
     <div
       className="w-3/5 flex flex-col bg-white p-2 shadow-3xl"
@@ -32,8 +38,27 @@ export default function CartContainer() {
                 </div>
               </div>
               <div className="py-2">
-                <span className="text-base font-normal">
-                  Qty {productCart.quantity}
+                <span className="text-base font-normal flex flex-row">
+                  {/* Qty {productCart.quantity} */}
+                  <AiOutlineMinusCircle
+                    className="mt-1 mr-2 hover:cursor-pointer"
+                    onClick={() =>
+                      decreaseQuantityProductById(
+                        productCart.id as number,
+                        productCart.quantity,
+                      )
+                    }
+                  />
+                  <span className="font-semibold">{productCart.quantity}</span>
+                  <GrAddCircle
+                    className="mt-1 ml-2 hover:cursor-pointer"
+                    onClick={() =>
+                      increaseQuantityProductById(
+                        productCart.id as number,
+                        productCart.quantity,
+                      )
+                    }
+                  />
                 </span>
               </div>
               <div className="py-2 px-4 flex flex-col">
