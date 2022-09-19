@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { CartContext, CartContextType } from "../../utils/context/CartContext";
+import { changePriceToDollarTypes } from "../../utils/helpers";
 import { Cart } from "../../utils/types";
 
 export default function CartContainer() {
@@ -37,10 +38,7 @@ export default function CartContainer() {
               </div>
               <div className="py-2 px-4 flex flex-col">
                 <span className="text-base font-semibold">
-                  US $
-                  {productCart.price
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  US ${changePriceToDollarTypes(productCart.price)}
                 </span>
                 <span className="justify-items-end text-end line-through text-sm font-semibold text-gray-400">
                   US $12.99

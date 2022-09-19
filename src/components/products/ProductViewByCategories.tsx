@@ -3,6 +3,7 @@ import { AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { CartContext, CartContextType } from "../../utils/context/CartContext";
+import { changePriceToDollarTypes } from "../../utils/helpers";
 import { getAllProductByCategories } from "../../utils/services";
 import { Products } from "../../utils/types";
 import Loading from "../Loading";
@@ -58,10 +59,7 @@ export default function ProductViewByCategories() {
                         {productData.category}
                       </a>
                       <p className="text-lg font-bold antialiased mt-2 italic">
-                        $
-                        {productData.price
-                          .toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                        ${changePriceToDollarTypes(productData.price)}
                       </p>
                     </div>
                     <div

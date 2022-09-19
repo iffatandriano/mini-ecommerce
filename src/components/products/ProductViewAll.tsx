@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
 import { useQuery } from "react-query";
 import { CartContext, CartContextType } from "../../utils/context/CartContext";
+import { changePriceToDollarTypes } from "../../utils/helpers";
 import { getProductsHomesAll } from "../../utils/services";
 import { Products } from "../../utils/types";
 import Loading from "../Loading";
@@ -67,10 +68,7 @@ export default function ProductViewAll() {
                         {productData.category}
                       </a>
                       <p className="text-lg font-bold antialiased mt-2 italic">
-                        $
-                        {productData.price
-                          .toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                        ${changePriceToDollarTypes(productData.price)}
                       </p>
                     </div>
                     <div

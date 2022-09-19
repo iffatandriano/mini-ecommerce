@@ -2,6 +2,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { CartContext, CartContextType } from "../../utils/context/CartContext";
+import { changePriceToDollarTypes } from "../../utils/helpers";
 import { Cart } from "../../utils/types";
 
 function CartHomeItem() {
@@ -58,10 +59,7 @@ function CartHomeItem() {
                       </span>
                       <div className="flex flex-row justify-between max-w-full">
                         <p className="text-base font-semibold">
-                          $
-                          {productData.price
-                            .toString()
-                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                          ${changePriceToDollarTypes(productData.price)}
                         </p>
                         <p className="text-md text-gray-400">
                           Qty: {productData.quantity}

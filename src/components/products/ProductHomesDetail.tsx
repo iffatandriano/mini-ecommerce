@@ -17,6 +17,7 @@ import { getProductDetailById } from "../../utils/services";
 import Loading from "../Loading";
 import ToastError from "../ToastError";
 import { CartContext, CartContextType } from "../../utils/context/CartContext";
+import { changePriceToDollarTypes } from "../../utils/helpers";
 
 function ProductHomesDetail() {
   const [quantity, setQuantity] = useState(1);
@@ -82,10 +83,7 @@ function ProductHomesDetail() {
                   className="basis-1/4 text-xl font-semibold p-4 text-center"
                   style={{ border: "solid .0625rem #000" }}
                 >
-                  $
-                  {data?.data?.price
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  ${changePriceToDollarTypes(data?.data?.price as number)}
                 </span>
                 <a
                   href={`/products/category/${data?.data?.category}`}
