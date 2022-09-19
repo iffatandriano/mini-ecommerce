@@ -3,7 +3,10 @@ import { AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { CartContext, CartContextType } from "../../utils/context/CartContext";
-import { changePriceToDollarTypes } from "../../utils/helpers";
+import {
+  changePriceToDollarTypes,
+  countDiscountFromPriceProduct,
+} from "../../utils/helpers";
 import { getAllProductByCategories } from "../../utils/services";
 import { Products } from "../../utils/types";
 import Loading from "../Loading";
@@ -58,9 +61,22 @@ export default function ProductViewByCategories() {
                       >
                         {productData.category}
                       </a>
-                      <p className="text-lg font-bold antialiased mt-2 italic">
-                        ${changePriceToDollarTypes(productData.price)}
-                      </p>
+                      <div className="flex flex-row">
+                        <p className="text-base text-gray-500 font-bold antialiased mt-2 italic line-through">
+                          ${changePriceToDollarTypes(productData.price)}
+                        </p>
+                        <p className="mx-1 text-lg font-bold antialiased mt-2 italic">
+                          $
+                          {productData.discountPercentage !== null
+                            ? changePriceToDollarTypes(
+                                countDiscountFromPriceProduct(
+                                  productData.price,
+                                  productData.discountPercentage,
+                                ),
+                              )
+                            : changePriceToDollarTypes(productData.price)}
+                        </p>
+                      </div>
                     </div>
                     <div
                       className="flex flex-row justify-between"

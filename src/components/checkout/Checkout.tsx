@@ -23,7 +23,7 @@ export default function Checkout() {
             {cartProduct
               ?.reduce((total, item) => total + item.price * item.quantity, 0)
               .toString()
-              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
           </p>
         </div>
       </div>
@@ -36,7 +36,7 @@ export default function Checkout() {
             {cartProduct
               ?.reduce((total, item) => total + item.price * item.quantity, 0)
               .toString()
-              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
           </p>
         </div>
         <button

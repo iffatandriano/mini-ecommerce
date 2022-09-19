@@ -17,7 +17,10 @@ import { getProductDetailById } from "../../utils/services";
 import Loading from "../Loading";
 import ToastError from "../ToastError";
 import { CartContext, CartContextType } from "../../utils/context/CartContext";
-import { changePriceToDollarTypes } from "../../utils/helpers";
+import {
+  changePriceToDollarTypes,
+  countDiscountFromPriceProduct,
+} from "../../utils/helpers";
 
 function ProductHomesDetail() {
   const [quantity, setQuantity] = useState(1);
@@ -79,12 +82,25 @@ function ProductHomesDetail() {
             <div className="flex flex-col">
               <h1 className="text-3xl font-bold p-6">{data?.data?.title}</h1>
               <div className="flex flex-row w-full">
-                <span
-                  className="basis-1/4 text-xl font-semibold p-4 text-center"
+                <div
+                  className="flex flex-row basis-1/4 text-xl font-semibold p-4 text-center"
                   style={{ border: "solid .0625rem #000" }}
                 >
-                  ${changePriceToDollarTypes(data?.data?.price as number)}
-                </span>
+                  <p className="text-base text-gray-500 font-bold antialiased italic line-through">
+                    ${changePriceToDollarTypes(data?.data?.price as number)}
+                  </p>
+                  <p className="mx-1 text-lg font-bold antialiased italic">
+                    $
+                    {data?.data?.discountPercentage !== null
+                      ? changePriceToDollarTypes(
+                          countDiscountFromPriceProduct(
+                            data?.data?.price as number,
+                            data?.data?.discountPercentage as number,
+                          ),
+                        )
+                      : changePriceToDollarTypes(data?.data?.price)}
+                  </p>
+                </div>
                 <a
                   href={`/products/category/${data?.data?.category}`}
                   className="basis-1/4 text-base font-semibold underline p-4 text-center"

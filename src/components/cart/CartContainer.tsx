@@ -2,7 +2,10 @@ import React, { useContext } from "react";
 import { AiOutlineMinusCircle } from "react-icons/ai";
 import { GrAddCircle } from "react-icons/gr";
 import { CartContext, CartContextType } from "../../utils/context/CartContext";
-import { changePriceToDollarTypes } from "../../utils/helpers";
+import {
+  changePriceToDollarTypes,
+  countDiscountFromPriceProduct,
+} from "../../utils/helpers";
 import { Cart } from "../../utils/types";
 
 export default function CartContainer() {
@@ -39,7 +42,6 @@ export default function CartContainer() {
               </div>
               <div className="py-2">
                 <span className="text-base font-normal flex flex-row">
-                  {/* Qty {productCart.quantity} */}
                   <AiOutlineMinusCircle
                     className="mt-1 mr-2 hover:cursor-pointer"
                     onClick={() =>
@@ -63,10 +65,22 @@ export default function CartContainer() {
               </div>
               <div className="py-2 px-4 flex flex-col">
                 <span className="text-base font-semibold">
-                  US ${changePriceToDollarTypes(productCart.price)}
+                  US $
+                  {changePriceToDollarTypes(
+                    countDiscountFromPriceProduct(
+                      productCart.price,
+                      productCart.discount,
+                    ),
+                  )}
                 </span>
                 <span className="justify-items-end text-end line-through text-sm font-semibold text-gray-400">
-                  US $12.99
+                  US $
+                  {changePriceToDollarTypes(
+                    countDiscountFromPriceProduct(
+                      productCart.price,
+                      productCart.discount,
+                    ),
+                  )}
                 </span>
                 <button
                   type="button"
