@@ -165,7 +165,6 @@ function ProductHomesDetail() {
                 style={{
                   borderLeft: "solid .0450rem #000",
                   transition: "all .14s ease-out",
-                  // backgroundColor: "#FF9587",
                 }}
                 type="button"
                 onClick={() =>

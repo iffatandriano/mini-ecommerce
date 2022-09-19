@@ -5,7 +5,6 @@ import { Provider as ReduxProvider } from "react-redux";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { Routes, Route } from "react-router-dom";
 import { store } from "./store";
-// import AppPage from "./pages/AppPage";
 import HomesPage from "./pages/homes/HomesPage";
 import ProductHomesDetail from "./components/products/ProductHomesDetail";
 import ProductViewAll from "./components/products/ProductViewAll";
