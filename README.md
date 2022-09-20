@@ -78,7 +78,7 @@ mini-ecommerce
 ## Powered By
 - [Create React App](https://github.com/facebook/create-react-app) to initialize the project with Javascript and TypeScript💎.
 - [React Context](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/context/) to manage the app state.
-- [Localstorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) to manage data favorite phonebook.
+- [Localstorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) to manage data cart.
 - [Tailwindcss ⚡](https://tailwindcss.com/docs/) to build the user interface.
 - [React-Query](https://react-query-v3.tanstack.com/) to make a respone from endpoint API.
 - Hosted on [Vercel 🚀](https://vercel.com/).
@@ -112,7 +112,7 @@ mini-ecommerce
 - Start the server
 
   ```bash
-    npm run dev or yarn dev
+    npm start or yarn start
   ```
 
 - Open http://localhost:3000 with your browser to see the result.
