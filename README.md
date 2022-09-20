@@ -98,7 +98,7 @@ mini-ecommerce
 - Go to the project directory
 
   ```bash
-    cd ia-techtest-phonebook
+    cd mini-ecommerce
   ```
 
 - Install dependencies
